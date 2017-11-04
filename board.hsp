@@ -1,0 +1,30 @@
+	dim a4, 2, 2
+	a4(0,0) = 50
+	a4(0,1) = 50
+	a4(1,0) = 100
+	a4(1,1) = 100
+	chgdisp 1
+	bgscr 0,640,480,0,0,0:gsel 0,2
+	mouse -1
+*main
+	
+repeat
+        color 255, 255, 255
+        boxf
+        color 0,0,0
+        boxf a4(0,0),a4(0,1),a4(1,0),a4(1,1)
+        color 0, 0, 0
+        pos 100, 100
+        mes "("+mousex+","+mousey+")"
+        if mousex <= a4(1,0) & mousex >= a4(0,0) & mousey <= a4(1,1) & mousey >= a4(0,1){
+	        color 127,127,127
+	        boxf a4(0,0),a4(0,1),a4(1,0),a4(1,1)
+	       }
+	    stick key
+        if key = 128{
+	        chgdisp
+	        end
+	       }
+        wait 10
+    loop
+    stop
